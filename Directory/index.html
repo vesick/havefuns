@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G96W8SDG18"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-G96W8SDG18');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit 社区导航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto p-6 min-h-screen">
+        <div class="mb-6 relative">
+            <input 
+                type="text" 
+                id="searchInput"
+                placeholder="搜索社区（名称或类别）" 
+                class="w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        
+        <div id="communitiesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Communities will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const communities = [
+            { name: 'Apple', url: 'https://www.reddit.com/r/apple/', subscribers: 5100000, category: '科技' },
+            { name: 'Entrepreneur', url: 'https://www.reddit.com/r/Entrepreneur/', subscribers: 3600000, category: '商业' },
+            { name: 'Startups', url: 'https://www.reddit.com/r/startups/', subscribers: 1700000, category: '商业' },
+            { name: 'Small Business', url: 'https://www.reddit.com/r/smallbusiness/', subscribers: 1700000, category: '商业' },
+            { name: 'Marketing', url: 'https://www.reddit.com/r/marketing/', subscribers: 1100000, category: '营销' },
+            { name: 'Digital Marketing', url: 'https://www.reddit.com/r/digital_marketing/', subscribers: 2000000, category: '营销' },
+            { name: 'Side Project', url: 'https://www.reddit.com/r/SideProject/', subscribers: 168000, category: '开发' },
+            { name: 'Web Development', url: 'https://www.reddit.com/r/webdev/', subscribers: 2400000, category: '开发' },
+            { name: 'Indie Hackers', url: 'https://www.reddit.com/r/indiehackers/', subscribers: 16000, category: '创业' },
+            { name: 'App Business', url: 'https://www.reddit.com/r/AppBusiness/', subscribers: 7700, category: '应用' }
+        ];
+
+        const communitiesContainer = document.getElementById('communitiesContainer');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderCommunities(communitiesToRender) {
+            communitiesContainer.innerHTML = communitiesToRender.map(community => `
+                <a 
+                    href="${community.url}" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="block bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
+                >
+                    <div class="flex justify-between items-center mb-2">
+                        <h2 class="text-xl font-bold text-blue-600">${community.name}</h2>
+                        <span class="text-sm text-gray-500">${community.category}</span>
+                    </div>
+                    <p class="text-gray-700">
+                        ${new Intl.NumberFormat('zh-CN').format(community.subscribers)} 订阅者
+                    </p>
+                </a>
+            `).join('');
+        }
+
+        // Initial render
+        renderCommunities(communities);
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredCommunities = communities.filter(community => 
+                community.name.toLowerCase().includes(searchTerm) ||
+                community.category.toLowerCase().includes(searchTerm)
+            );
+            renderCommunities(filteredCommunities);
+        });
+    </script>
+</body>
+</html>
