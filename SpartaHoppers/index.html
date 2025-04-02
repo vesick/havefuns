@@ -43,15 +43,27 @@
             50% { background-position: 100% center; }  
             100% { background-position: 0% center; }  
         }  
+        .logo {  
+            height: 32px;  
+            width: 128px;  
+            object-fit: contain;  
+        }  
+        
+        .footer-logo {  
+            height: 24px;  
+            width: 96px;  
+            object-fit: contain;  
+            vertical-align: middle;  
+        }
     </style>  
 </head>  
 <body class="bg-[#FBFBFD] text-[#1D1D1F] font-sans antialiased">  
     <!-- Navigation -->  
     <nav class="sticky top-0 z-50 bg-[#FBFBFD]/95 backdrop-blur-md border-b border-[#F2F2F7]">  
         <div class="max-w-5xl mx-auto px-5 py-5 flex justify-center">  
-            <a href="https://havefuns.app" class="text-2xl font-bold text-[#0A84FF] hover:text-[#0071E3] transition duration-300">  
-                havefuns  
-            </a>  
+            <a href="https://havefuns.app" class="transition duration-300">  
+                <img src="https://havefuns.app/logo.png" alt="havefuns logo" class="logo">  
+            </a>
         </div>  
     </nav>  
 
@@ -132,10 +144,15 @@
 
     <!-- Footer -->  
     <footer class="border-t border-[#E5E5E5] py-8 mt-16">  
-        <div class="max-w-5xl mx-auto px-5 text-center">  
-            <p class="text-[#86868B]">© 2025 Sparta Hoppers | <a href="https://havefuns.app" class="text-[#0A84FF] hover:underline">havefuns</a></p>  
+        <div class="max-w-5xl mx-auto px-5">  
+            <div class="flex items-center justify-center">  
+                <p class="text-[#86868B] mr-2">© 2025 Sparta Hoppers |</p>  
+                <a href="https://havefuns.app" class="ml-2">  
+                    <img src="https://havefuns.app/logo.png" alt="havefuns" class="footer-logo">  
+                </a>  
+            </div>  
         </div>  
-    </footer>  
+    </footer>
 
     <!-- Schema.org markup for SEO -->  
     <script type="application/ld+json">  
