@@ -1,0 +1,16 @@
+# robots.txt for havefuns.app  
+User-agent: *  
+Allow: /  
+
+# 常见不需要索引的目录  
+Disallow: /admin/  
+Disallow: /private/  
+Disallow: /cgi-bin/  
+Disallow: /tmp/  
+Disallow: /assets/css/  
+Disallow: /assets/js/  
+Disallow: /wp-admin/  
+Disallow: /wp-includes/  
+
+# 网站地图位置  
+Sitemap: https://havefuns.app/sitemap.xml
